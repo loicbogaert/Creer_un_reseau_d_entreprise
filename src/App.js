@@ -1,5 +1,4 @@
 import Home from "./pages/Home";
-import Chat from "./pages/Chat";
 import Medias from "./pages/Medias";
 import Texts from "./pages/Texts";
 import Login from "./pages/Login";
@@ -12,7 +11,6 @@ function App() {
     <BrowserRouter>
         <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/forum" exact component={Chat} />
             <Route path="/forum/text" exact component={Texts} />
             <Route path="/forum/media" exact component={Medias} />
             <Route path="/signup" exact component={Signup} />

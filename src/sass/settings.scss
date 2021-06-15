@@ -1,0 +1,52 @@
+    /*colors / fonts*/
+
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee:ital@1&family=Do+Hyeon&family=Lobster&display=swap");
+
+$font-1: 'Do Hyeon', sans-serif;
+$font-2 : 'Lobster', cursive;
+$font-3 : 'ABeeZee', sans-serif;
+
+$color-1 : #E9EBEE;
+$color-2 : #5c74ff;
+$color-bg : #444852;
+
+    /*basic settings*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $color-bg;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    font-family: $font-1;
+    color: $color-1;
+}
+
+h1 {
+    font-family: $font-2;
+    color:  $color-2;
+}
+
+h2 {
+    font-family: $font-2;
+    color: $color-2;
+}
+
+    /*navigation*/
+
+.globalNavi {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
