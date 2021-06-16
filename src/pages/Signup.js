@@ -1,5 +1,6 @@
 import React from 'react';
 import Connect from '../components/Connect';
+import CreateAccount from '../components/CreateAccount';
 import Navigation from '../components/Navigation';
 
 const Signup = () => {
@@ -9,6 +10,7 @@ const Signup = () => {
                 <Navigation />
                 <Connect />
             </div>
+            <CreateAccount />
         </div>
     );
 };

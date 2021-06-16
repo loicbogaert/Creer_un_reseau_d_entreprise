@@ -1,6 +1,7 @@
 import React from 'react';
 import Connect from '../components/Connect';
 import Navigation from '../components/Navigation';
+import LoginForm from '../components/LoginForm';
 
 
 const Login = () => {
@@ -10,6 +11,7 @@ const Login = () => {
                 <Navigation />
                 <Connect />
             </div>
+                <LoginForm />
         </div>
     );
 };

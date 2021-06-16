@@ -1,5 +1,6 @@
 import Navigation from "../components/Navigation";
 import Connect from "../components/Connect";
+import Logo from "../components/Logo";
 
 const Home = () => {
     return (
@@ -8,7 +9,7 @@ const Home = () => {
                 <Navigation />
                 <Connect />
             </div>
-            <h1>Home</h1>
+            <Logo />
         </div>
     )
 }

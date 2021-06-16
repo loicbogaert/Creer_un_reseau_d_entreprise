@@ -1,0 +1,32 @@
+.signupForm {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        label {
+            color: $color-1;
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: $font-2;
+            margin-top: 25px;
+            text-shadow: 1px 1px 10px $color-2;
+        }
+
+        input {
+            height: 40px;
+            font-size: 20px;
+            font-family: $font-1;
+            text-align: center;
+        }
+}
