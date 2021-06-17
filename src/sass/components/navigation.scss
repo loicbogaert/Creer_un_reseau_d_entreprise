@@ -1,3 +1,4 @@
+/*component*/
 .navigation {
     margin: 20px;
     display: flex;
@@ -13,3 +14,25 @@
         border-bottom: 4px solid $color-2;
     }
 }
+
+/*header*/
+
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    /*format mobile*/
+
+    @media (max-width : 768px) {
+        header {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navigation {
+            order : 2;
+            margin-top: 0;
+        }
+    }

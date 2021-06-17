@@ -14,3 +14,10 @@
         border-bottom: 4px solid $color-2;
     }
 }
+
+@media (max-width : 768px) {
+    .connect {
+        margin-bottom: 0;
+        margin-top: 5px;
+    }
+}

@@ -3,8 +3,8 @@ footer {
     bottom: 0; right: 0; left: 0;
     background-color: $color-2;
     border-top: 2px solid black;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
         ul {
             display: flex;
             flex-direction: row;
@@ -19,3 +19,5 @@ footer {
             font-family: $font-1;
         }
 }
+
+
