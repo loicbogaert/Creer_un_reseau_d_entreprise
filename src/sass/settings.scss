@@ -7,7 +7,7 @@ $font-2 : 'Lobster', cursive;
 $font-3 : 'ABeeZee', sans-serif;
 
 $color-1 : #E9EBEE;
-$color-2 : #5c74ff;
+$color-2 : #4791ff;
 $color-bg : #444852;
 
     /*basic settings*/
@@ -18,8 +18,12 @@ $color-bg : #444852;
     padding: 0;
 }
 
-body {
-    background-color: $color-bg;
+body, html {
+        background-color: $color-bg;
+        position: relative;
+        min-height: 100vh;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
 }
 
 li {
@@ -45,7 +49,7 @@ h2 {
 
     /*navigation*/
 
-.globalNavi {
+header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

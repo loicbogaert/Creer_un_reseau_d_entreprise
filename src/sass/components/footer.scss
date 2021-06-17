@@ -1,0 +1,21 @@
+footer {
+    position: absolute;
+    bottom: 0; right: 0; left: 0;
+    background-color: $color-2;
+    border-top: 2px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        li {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+            color: black;
+            font-family: $font-1;
+        }
+}
