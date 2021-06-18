@@ -21,9 +21,13 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+            a {
+             text-shadow: 1px 1px 5px black;
+            }
     }
+
     
-    /*format mobile*/
+    /*mobile format*/
 
     @media (max-width : 768px) {
         header {

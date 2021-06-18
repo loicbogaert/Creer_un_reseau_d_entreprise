@@ -5,10 +5,10 @@ const Connect = () => {
     return (
         <div className="connect">
             <NavLink exact to="/signup" activeClassName = "nav-active">
-                Signup
+                Signup <i class="fas fa-user-plus"></i>
             </NavLink>
             <NavLink exact to="/login" activeClassName = "nav-active">
-                Login
+                Login <i class="fas fa-sign-in-alt"></i>
             </NavLink>
         </div>
     );

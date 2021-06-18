@@ -37,6 +37,9 @@ a {
     cursor: pointer;
     font-family: $font-1;
     color: $color-1;
+        &:hover {
+            color: $color-2;
+        }
 }
 
 h1 {

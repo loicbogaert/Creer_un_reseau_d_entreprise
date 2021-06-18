@@ -13,6 +13,14 @@
     .nav-active {
         border-bottom: 4px solid $color-2;
     }
+
+    .fa-sign-in-alt {
+        font-size: 20px;
+    }
+
+    .fa-user-plus {
+        font-size: 18px;
+    }
 }
 
 @media (max-width : 768px) {
