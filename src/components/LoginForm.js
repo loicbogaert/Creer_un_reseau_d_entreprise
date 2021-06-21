@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const LoginForm = () => {
     return (
         <div className="signupForm">
@@ -9,7 +10,9 @@ const LoginForm = () => {
                 <input type="text" required />
 
                 <label>Password</label>
-                <input type="text" required />                          
+                <input type="text" required />   
+
+                 <input type="submit" value="Submit" className="submit"/>                       
             </form>
         </div>
     );

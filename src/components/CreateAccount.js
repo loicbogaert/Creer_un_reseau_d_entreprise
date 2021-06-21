@@ -1,21 +1,53 @@
-import React from 'react';
+import React,{useState} from 'react';
+import Axios from 'axios';
+
 
 const CreateAccount = () => {
+    const url ="http://localhost:3005/signup"
+    const [data, setData] = useState({
+        name : "",
+        email : "",
+        password : "",
+        passwordCheck : ""
+    })
+
+    function submit(e){
+        e.preventDefault();
+        Axios.post(url,{
+            name : data.name,
+            email : data.email,
+            password : data.password,
+            passwordCheck : data.passwordCheck
+        })
+        .then(res=> {
+            console.log(res.data)
+        })
+    }
+
+    function handle(e) {
+        const newdata={...data};
+        newdata[e.target.id] = e.target.value;
+        setData(newdata);
+        console.log(newdata);
+    }
+
     return (
         <div className="signupForm">
                     <h1>Create Your Account</h1>
-            <form>
+            <form onSubmit={(e)=> submit(e)}>
                 <label>Name</label>
-                <input type="text" required />
+                <input onChange={(e)=>handle(e)} value={data.name} id="name" placeholder="Bob Ross" type="text" required />
 
                 <label>Email</label>
-                <input type="text" required />
+                <input onChange={(e)=>handle(e)} value={data.email} id="email" placeholder="Example@gmail.com" type="text" required />
 
                 <label>Password</label>
-                <input type="text" required />
+                <input onChange={(e)=>handle(e)} value={data.password} id="password" placeholder="Password" type="text" required />
 
                 <label>Rewrite your password</label>
-                <input type="text" required />    
+                <input onChange={(e)=>handle(e)} value={data.passwordCheck} id="passwordCheck" placeholder="Password" type="text" required />
+
+                <input type="submit" value="Submit" className="submit"/>
             </form>
         </div>
     );
