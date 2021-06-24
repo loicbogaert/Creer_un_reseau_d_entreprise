@@ -3,7 +3,7 @@ import Axios from 'axios';
 
 
 const CreateAccount = () => {
-    const url ="http://localhost:3005/signup"
+    const url ="http://localhost:3005/api/auth/signup"
     const [data, setData] = useState({
         name : "",
         email : "",
@@ -39,13 +39,13 @@ const CreateAccount = () => {
                 <input onChange={(e)=>handle(e)} value={data.name} id="name" placeholder="Bob Ross" type="text" required />
 
                 <label>Email</label>
-                <input onChange={(e)=>handle(e)} value={data.email} id="email" placeholder="Example@gmail.com" type="text" required />
+                <input onChange={(e)=>handle(e)} value={data.email} id="email" placeholder="Example@gmail.com" type="email" required />
 
                 <label>Password</label>
-                <input onChange={(e)=>handle(e)} value={data.password} id="password" placeholder="Password" type="text" required />
+                <input onChange={(e)=>handle(e)} value={data.password} id="password" placeholder="Password" type="password" required />
 
                 <label>Rewrite your password</label>
-                <input onChange={(e)=>handle(e)} value={data.passwordCheck} id="passwordCheck" placeholder="Password" type="text" required />
+                <input onChange={(e)=>handle(e)} value={data.passwordCheck} id="passwordCheck" placeholder="Password" type="password" required />
 
                 <input type="submit" value="Submit" className="submit"/>
             </form>
