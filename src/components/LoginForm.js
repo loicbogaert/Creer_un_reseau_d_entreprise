@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
 import Axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 
 const LoginForm = () => {
+
+    const history = useHistory();
+
+    /**Sending data to server with Axios */
 
     const url ="http://localhost:3005/api/auth/login"
     const [data, setData] = useState({
@@ -17,7 +22,8 @@ const LoginForm = () => {
             password : data.password,
         })
         .then(res=> {
-            console.log(res.data)
+        /**Changing page when submitting */
+            history.push("/logged");
         })
     }
 
@@ -27,11 +33,12 @@ const LoginForm = () => {
         setData(newdata);
         console.log(newdata);
     }
+
     return (
         <div className="signupForm">
             <h1>Connection</h1>
             <div className="signupForm">
-            <form onSubmit={(e)=> submit(e)}>
+            <form onSubmit= {(e)=>submit(e)}>
 
                 <label>Email</label>
                 <input onChange={(e)=>handle(e)} value={data.email} id="email" placeholder="Example@gmail.com" type="email" required />

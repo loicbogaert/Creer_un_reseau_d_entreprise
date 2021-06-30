@@ -1,5 +1,6 @@
 const express = require('express');
 const userRoutes = require('./routes/User');
+const helmet = require('helmet');
 const cors = require('cors');
 
 /** Sync sequelize models */
@@ -11,7 +12,8 @@ db.sequelize.sync();
 const app = express();
 
     /**cors headers */
-    app.use(cors())
+    app.use(helmet());
+    app.use(cors());
 
 sequelize.query("SELECT * from users", { type: sequelize.QueryTypes.SELECT})
     .then(function(users){

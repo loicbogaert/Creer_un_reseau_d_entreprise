@@ -23,12 +23,14 @@ function App() {
 
             {/**Routes when not logged */}
             <Route path="/" exact component={Navigation} />
-            <Route path="/forum/text" exact component={Navigation} />
-            <Route path="/forum/media" exact component={Navigation} />
+            <Route path="/signup" exact component={Navigation} />
+            <Route path="/login" exact component={Navigation} />
           </Switch>
 
           <Switch>
             <Route path="/" exact component={Connect} />
+            <Route path="/signup" exact component={Connect} />
+            <Route path="/login" exact component={Connect} />
             <Route path="/logged" exact component={Disconnect} />
             <Route path="/forum/text/logged" exact component={Disconnect} />
             <Route path="/forum/media/logged" exact component={Disconnect} />

@@ -1,8 +1,11 @@
 import React,{useState} from 'react';
 import Axios from 'axios';
-
+import { useHistory } from 'react-router-dom';
+/*Send data to server with Axios*/ 
 
 const CreateAccount = () => {
+    const history = useHistory();
+
     const url ="http://localhost:3005/api/auth/signup"
     const [data, setData] = useState({
         name : "",
@@ -20,8 +23,9 @@ const CreateAccount = () => {
             passwordCheck : data.passwordCheck
         })
         .then(res=> {
-            console.log(res.data)
-        })
+                /*Page change when submitting*/ 
+            history.push("/login");
+        });
     }
 
     function handle(e) {
@@ -31,10 +35,15 @@ const CreateAccount = () => {
         console.log(newdata);
     }
 
+
+
+
+    /**Signup Form */
+
     return (
         <div className="signupForm">
                     <h1>Create Your Account</h1>
-            <form onSubmit={(e)=> submit(e)}>
+            <form onSubmit= {(e)=>submit(e)}>
                 <label>Name</label>
                 <input onChange={(e)=>handle(e)} value={data.name} id="name" placeholder="Bob Ross" type="text" required />
 
@@ -52,5 +61,6 @@ const CreateAccount = () => {
         </div>
     );
 };
+
 
 export default CreateAccount;

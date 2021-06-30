@@ -7,12 +7,6 @@ const Navigation = () => {
             <NavLink exact to="/" activeClassName="nav-active">
                 Home
             </NavLink>
-            <NavLink exact to="/forum/text" activeClassName="nav-active">
-                Forum
-            </NavLink>
-            <NavLink exact to="/forum/media" activeClassName="nav-active">
-                Medias
-            </NavLink>
         </div>
     );
 };
