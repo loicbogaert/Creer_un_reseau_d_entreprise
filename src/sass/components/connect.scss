@@ -18,8 +18,24 @@
         font-size: 20px;
     }
 
+    .fa-sign-out-alt {
+        margin-left: 5px;
+    }
+
     .fa-user-plus {
         font-size: 18px;
+    }
+
+    .active {
+        display: flex;
+        flex-direction: row;
+    }
+
+    p {
+        color : $color-1;
+        margin-right: 5px;
+        font-family: $font-3;
+        font-weight: bold;
     }
 }
 

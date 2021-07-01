@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 
 
 const LoginForm = () => {
-
     const history = useHistory();
 
     /**Sending data to server with Axios */
@@ -22,8 +21,11 @@ const LoginForm = () => {
             password : data.password,
         })
         .then(res=> {
-        /**Changing page when submitting */
-            history.push("/logged");
+            /**Response saved in localStorage */
+            const userName = res.data.userName;
+            localStorage.setItem("loggedIn",userName);
+            /**Changing page when submitting */
+            history.push("/");
         })
     }
 

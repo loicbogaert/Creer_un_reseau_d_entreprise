@@ -56,6 +56,7 @@ class Users {
                 if (data) {
                     return res.status(200).json({
                         userId: user.id,
+                        userName: user.name,
                         token: jwt.sign(
                             { userId: user.id },
                             process.env.SECRET_TOKEN,
