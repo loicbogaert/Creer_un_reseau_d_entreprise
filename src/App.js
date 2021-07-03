@@ -1,6 +1,5 @@
 import { BrowserRouter, Switch, Route} from "react-router-dom";
 import Home from "./pages/Home";
-import Medias from "./pages/Medias";
 import Texts from "./pages/Texts";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -20,8 +19,7 @@ function App() {
         <main>
         <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/forum/text" exact component={Texts} />
-            <Route path="/forum/media" exact component={Medias} />
+            <Route path="/forum" exact component={Texts} />
             <Route path="/signup" exact component={Signup} />
             <Route path="/login" exact component={Login} />
 
@@ -34,8 +32,6 @@ function App() {
           <Footer />
         </footer>
     </BrowserRouter>
-
-    
   );
 }
 

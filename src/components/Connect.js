@@ -7,7 +7,7 @@ const Connect = () => {
 
     switch(logged) {
         case null: 
-        {/***************************** If localStorage is empty (user isn't logged) **************************************/}
+        /***************************** If localStorage is empty (user isn't logged) **************************************/
         return(
             <div className="connect">
                 <NavLink exact to="/signup" activeClassName = "nav-active">
@@ -19,14 +19,15 @@ const Connect = () => {
             </div>
         )
         case logged:
-           {/***************************** If localStorage isn't empty (user is logged) **************************************/}
+           /***************************** If localStorage isn't empty (user is logged) **************************************/
         return(
-            <div className="connect">
+            <div className="disconnect">
                 <NavLink exact to ="/" onClick={() => localStorage.removeItem("loggedIn")}>
-               <p className="userName">{logged}</p> - Log out <i className="fas fa-sign-out-alt"></i>
+               <p className="userName">{logged}</p>- Log out <i className="fas fa-sign-out-alt"></i>
                 </NavLink>
             </div>
         )
+        default:
     };
 };
 

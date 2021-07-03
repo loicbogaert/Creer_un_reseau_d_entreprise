@@ -1,0 +1,14 @@
+/*Close button slight animation*/
+
+@keyframes close{
+    0% {
+        background-color : $color-1;
+    }
+
+    100% {
+        background-color : red;
+        color: white;
+        background-color: red;
+        border: solid 2px black;
+    }
+}
