@@ -1,0 +1,37 @@
+#singleContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-1;
+    font-family: $font-1;
+
+    &__infos {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    &__title {
+        text-align: center;
+        width: 100%;
+        padding-top: 15px;
+        font-size:24px;
+    }
+
+    &__article{
+        width: 90%;
+        padding: 20px;
+    }
+
+    &__comments{
+        text-align: center;
+        padding: 10px;
+    }
+
+    &__leaveMsg{
+        align-self: center;
+        width: 60%;
+        padding: 5px;
+        border: 1px solid $color-2;
+        margin: 5px;
+    }
+}

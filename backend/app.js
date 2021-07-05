@@ -1,5 +1,6 @@
 const express = require('express');
 const userRoutes = require('./routes/User');
+const articleRoutes = require('./routes/Article')
 const helmet = require('helmet');
 const cors = require('cors');
 
@@ -15,13 +16,19 @@ const app = express();
     app.use(helmet());
     app.use(cors());
 
-sequelize.query("SELECT * from users", { type: sequelize.QueryTypes.SELECT})
+sequelize.query("SELECT * from users", { type: sequelize.QueryTypes.SELECT })
     .then(function(users){
         console.log(users);
+    })
+
+    sequelize.query("SELECT * from articles", { type: sequelize.QueryTypes.SELECT })
+    .then(function(articles){
+        console.log(articles);
     })
 
     /*init routes*/
     app.use(express.json());
     app.use('/api/auth', userRoutes);
+    app.use('/api/article', articleRoutes);
 
 module.exports = app;

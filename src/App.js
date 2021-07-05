@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound';
 import Navigation from "./components/Navigation";
 import Connect from "./components/Connect";
 import Footer from "./components/Footer";
+import SingleArticle from "./components/SingleArticle";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/forum" exact component={Texts} />
             <Route path="/signup" exact component={Signup} />
             <Route path="/login" exact component={Login} />
+            <Route path="/forum/:id" exact component={SingleArticle} />
 
             {/** 404 not found */}
             <Route component={NotFound} />

@@ -32,15 +32,6 @@ li {
     list-style-type: none;
 }
 
-a {
-    text-decoration: none;
-    cursor: pointer;
-    font-family: $font-1;
-    color: $color-1;
-        &:hover {
-            color: $color-2;
-        }
-}
 
 h1 {
     font-family: $font-2;
