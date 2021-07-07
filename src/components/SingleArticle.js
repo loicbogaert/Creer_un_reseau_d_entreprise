@@ -1,16 +1,24 @@
 import Axios from 'axios';
 import React, {useState, useEffect, Fragment} from 'react';
+import { useParams } from 'react-router';
+import ArticleComments from './ArticleComments';
 
 const SingleArticle = () => {
 
-    const url = "http://localhost:3005/api/article"
-    const [datas, setDatas] = useState([]);
+    const url = "http://localhost:3005/api/article/:id"
+    const [datas, setDatas] = useState({
+        id : ""
+    });
+    const param = useParams();
+    const id = param.id;
 
-    /**Axios get request to db*/
-
+    /**Axios post request to db for ARTICLES*/
     useEffect(() => {
-        Axios.get(url)
+        Axios.post(url,{
+            id : id
+        })
         .then((res) => {
+            console.log(res.data);
             setDatas(res.data);
         })
         .catch((err) =>{
@@ -18,16 +26,15 @@ const SingleArticle = () => {
         })
     }, []);
 
+    const article = datas;
+
     return (
          <Fragment>
              {/**Create new article for each article stored in db */}
-            {datas.map((article) => (
-                <div key={article.id} id="singleContainer">
-                {/**Article titles */}
+            <div key={article.id} id="singleContainer">
+                {/**Article infos */}
                 <div id="singleContainer__infos">
-                {/**Written by*/}
                     <p>Author : {article.userName}</p>
-                {/**Date of publication */}
                     <p>Publish Date : {article.date}</p>
                 </div>
                 <h3 id="singleContainer__title">{article.title}</h3>
@@ -35,16 +42,13 @@ const SingleArticle = () => {
                 <div id="singleContainer__article">
                     <p id="articleText">{article.article}</p>
                 </div>
-                
-                <h3 id="singleContainer__comments">Comments</h3>
-
-                <textarea id="singleContainer__leaveMsg" placeholder="Leave a message"></textarea>
-                
+                {/**Comments section*/}
+                <div id="singleContainer__borderSection"></div>
+                <h3 id="singleContainer__comments">Comment Section</h3>
+                <ArticleComments></ArticleComments>
                 <div id="singleContainer__messages">
-
                 </div>
             </div>
-        ))}
         </Fragment>
     );
 };

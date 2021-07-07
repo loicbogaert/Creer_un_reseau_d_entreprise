@@ -13,7 +13,8 @@ class Articles {
             article : article,
             title : title,
             userName : userName,
-            date : date
+            date : date,
+            comments : []
         })
         .then(() => res.status(201).json({ message : 'Article Created !' }))
         .catch(error => res.status(400).json({ error }))
@@ -24,6 +25,14 @@ class Articles {
        .then(articles => res.status(201).json(articles))
        .catch(error => res.status(400).json({ error }) )
     };
+
+    singleArticle(req, res, next) {
+        Article.findOne({
+            where: { id: req.body.id }
+        })
+        .then(article => res.status(201).json(article))
+        .catch(error => res.status(400).json({ error }))
+    }
 };
 
 module.exports = Articles;

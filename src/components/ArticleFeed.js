@@ -24,7 +24,7 @@ const ArticleFeed = () => {
         <Fragment>
              {/**Create new article for each article stored in db */}
             {datas.map((article) => (
-                <Link to={'/forum/:' + article.id} key={article.id} id="articleContainer">
+                <Link to={'/forum/' + article.id} key={article.id} id="articleContainer">
                 {/**Article titles */}
                 <div id="articleTitle">
                     <h3>{article.title}</h3>

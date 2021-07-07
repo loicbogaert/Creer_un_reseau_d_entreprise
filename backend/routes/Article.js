@@ -8,6 +8,7 @@ const articleCtrl = new Articles();
 
 router.post('/', articleCtrl.createArticle);
 router.get('/', articleCtrl.showArticle);
+router.post('/:id', articleCtrl.singleArticle);
 
 
 
