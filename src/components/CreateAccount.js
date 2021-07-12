@@ -1,11 +1,16 @@
 import React,{useState} from 'react';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
-/*Send data to server with Axios*/ 
+
+
 
 const CreateAccount = () => {
     const history = useHistory();
 
+    /**Error handler */
+    const [errorMessage, setErrorMessage] = useState('');
+
+    /*Send data to server with Axios*/ 
     const url ="http://localhost:3005/api/auth/signup"
     const [data, setData] = useState({
         name : "",
@@ -25,7 +30,9 @@ const CreateAccount = () => {
         .then(res=> {
                 /*Page change when submitting*/ 
             history.push("/login");
-        });
+        }).catch(error => {
+            setErrorMessage(error.response.statusText)
+        })
     }
 
     function handle(e) {
@@ -58,6 +65,9 @@ const CreateAccount = () => {
 
                 <input type="submit" value="Submit" className="submit"/>
             </form>
+            {errorMessage && (
+                    <p className="error"><i className="fas fa-exclamation-triangle"></i> {errorMessage} </p>
+                )}
         </div>
     );
 };

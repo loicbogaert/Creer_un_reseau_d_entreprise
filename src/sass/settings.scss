@@ -19,14 +19,37 @@ $color-bg : #444852;
 }
 
 body, html {
-        background-color: $color-bg;
-        position: absolute;
-        height: calc(100% -107px);
-        min-height: 100vh;
-        width: 100%;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
+    flex: 1;
+    background-color: $color-bg;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+body {
+    min-height: 100vh;
+    height: 100%;
+}
+
+/*
+- utiliser flex-colone sur le body+ justify content 
+space between et flex 1 pr qu'il soit prioritaire
+ (pour éviter les doubles ascenceurs)
+ */
 
 li {
     list-style-type: none;

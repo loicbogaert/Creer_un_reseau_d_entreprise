@@ -4,78 +4,78 @@ import { useParams } from 'react-router';
 
 const ArticleComments = () => {
 
-const param = useParams();
-const id = param.id;
-const url2 = "http://localhost:3005/api/comments/:id"
-const url = "http://localhost:3005/api/comments"
-const [comments, setComments] = useState({
-    id : "",
-    comment : "",
-    userName : ""
-});
+    const param = useParams();
+    const id = param.id;
+    const url2 = "http://localhost:3005/api/comments/:id"
+    const url = "http://localhost:3005/api/comments"
+    const [comments, setComments] = useState({
+        id : "",
+        comment : "",
+        userName : ""
+    });
 
-const [commentFeed, setCommentFeed] = useState([]
-);
+    const [commentFeed, setCommentFeed] = useState([]);
+    const [errorMessage, setErrorMessage] = useState();
 
-/**Axios post request to db RECEIVE COMMENTS*/
+    /**Axios post request to db RECEIVE COMMENTS*/
 
-useEffect(() => {
-    Axios.post(url,{
-        id : id
-    })
-    .then((res) => {
-        setCommentFeed((res.data));
-        console.log(res.data);
-    })
-    .catch((err) =>{
-        console.log(err)
-    })
-}, []);
-
-/**Axios post request to db to SEND COMMENTS*/
-function submit(e){
-    e.preventDefault();
-        Axios.post(url2,{
-            id : id,
-            comment : comments.comment,
-            userName : localStorage.getItem("loggedIn")
+    useEffect(() => {
+        Axios.post(url,{
+            id : id
         })
         .then((res) => {
-            console.log(res.data);
-            window.location.reload(false);
+            setCommentFeed((res.data));
         })
-        .catch((err) =>{
-            console.log(err)
+        .catch((error) =>{
+            console.log(error)
         })
-}
+    }, []);
 
-function handle(e){
-    const newdata={...comments};
-    newdata[e.target.id] = e.target.value;
-    setComments(newdata);
-    console.log(newdata)
-}
+    /**Axios post request to db to SEND COMMENTS*/
 
-console.log(commentFeed)
+    function submit(e){
+        e.preventDefault();
+            Axios.post(url2,{
+                id : id,
+                comment : comments.comment,
+                userName : localStorage.getItem("loggedIn")
+            })
+            .then((res) => {
+                window.location.reload(false);
+            })
+            .catch((error) =>{
+                setErrorMessage(error.response.data.error.errors[0].message)
+            })
+    }
 
-return (
-    <Fragment>
-           <form id="msgForm" onSubmit={(e)=>submit(e)}>
-           <textarea onChange={(e)=>handle(e)} value={comments.comment} id="comment" placeholder="Leave a message"></textarea>
-           <input type="submit" value="Send Message" id="submit"/>
-           </form>
-                {commentFeed.map(allComments =>(
-                    <div id="allComments" key={allComments.id}>
-                        <div id="allComments__infos">
-                            <p id="allComments__user">User : {allComments.userName}</p>
-                            <p id="allComments__date">Publication Date : {allComments.date}</p>
-                        </div>
+    function handle(e){
+        const newdata={...comments};
+        newdata[e.target.id] = e.target.value;
+        setComments(newdata);
+        console.log(newdata)
+    }
 
-                        <p id="allComments__comment">{allComments.comment}</p>
+    return (
+        <Fragment>
+            {errorMessage && (
+                <p className="error"><i className="fas fa-exclamation-triangle"></i> {errorMessage} </p>
+            )}
+            <form id="msgForm" onSubmit={(e)=>submit(e)}>
+                <textarea onChange={(e)=>handle(e)} value={comments.comment} id="comment" placeholder="Leave a message" autoCapitalize="sentences" minLength="1"></textarea>
+                <input type="submit" value="Send Message" id="submit"/>
+            </form>
+            {commentFeed.map(allComments =>(
+                <div id="allComments" key={allComments.id}>
+                    <div id="allComments__infos">
+                        <p id="allComments__user">User : {allComments.userName}</p>
+                        <p id="allComments__date">Publication Date : {allComments.date}</p>
                     </div>
-                ))}
-   </Fragment>
-);
+
+                    <p id="allComments__comment">{allComments.comment}</p>
+                </div>
+            ))}
+       </Fragment>
+    );
 };
 
 

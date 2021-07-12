@@ -10,6 +10,9 @@ const Connect = () => {
         /***************************** If localStorage is empty (user isn't logged) **************************************/
         return(
             <div className="connect">
+                <NavLink exact to="/delete" activeClassName = "nav-active">
+                    Delete Account <i class="fas fa-times"></i>
+                </NavLink>
                 <NavLink exact to="/signup" activeClassName = "nav-active">
                     Signup <i className="fas fa-user-plus"></i>
                 </NavLink>

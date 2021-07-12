@@ -29,9 +29,9 @@ class Users {
                         password : hash
                     })
                 .then(() => res.status(201).json({ message : 'New user created' }))
-                .catch(error => res.status(400).json({ error }))
+                .catch(error => res.status(400).json({ error }), res.statusMessage = ('This email has already been used'))
                 })
-                .catch(error => res.status(500).json({ error }));
+                .catch(error => res.status(500).json({ error }), res.statusMessage = ('Server Error :('));
             })
         } else {
             res.statusMessage = ('Passwords doesn\'t match !')
@@ -48,7 +48,7 @@ class Users {
         User.findOne({ where : { email : email }})
         .then(user => {
             if(!user) {
-                return res.status(401).json({ error : 'User not found' })
+                return res.status(401).json({ error : 'User not found, Your email is probably incorrect' })
             } 
             bcrypt.compare(password, user.password, (err, data) => {
                 if(err) throw (error => res.status(500).json({ error }));
@@ -66,13 +66,41 @@ class Users {
                     /**Password didn't match */
 
             } else {
-                res.statusMessage = ('Wrong password')
-                res.status(401).end()
+                res.status(401).json({ error : 'Incorrect Password, please try again' })
             }
         })
     })
     .catch(error => res.status(500).json({ error }));
     };
+
+
+    delete (req, res, next) {
+        const password = req.body.password;
+        const email = req.body.email;
+
+        console.log(email)
+
+
+        /**If user was found, check password, then log the user in*/
+        User.findOne({ where : { email : email }})
+        .then(user => {
+            if(!user) {
+                return res.status(401).json({ error : 'User not found, Your email is probably incorrect' })
+            } 
+            bcrypt.compare(password, user.password, (err, data) => {
+                if(err) throw (error => res.status(500).json({ error }));
+
+                if(data) {
+                    User.destroy({ where : { email : email }})
+                    .then(() => res.status(201).json({ message : 'Account successfully deleted !' }))
+                }
+                else {
+                    res.status(401).json({ error : 'Incorrect Password, please try again' })
+                }
+            })
+        })
+        .catch(error => res.status(500).json({ error }));
+        };
 };
 
 module.exports = Users;

@@ -2,11 +2,20 @@ module.exports = (sequelize, Sequelize) => {
     const Comments = sequelize.define("comments", {
         comment : {
             type : Sequelize.TEXT,
-            allowNull : false
+            allowNull : false,
+            validate :{
+                is : {
+                    args : ["^(?!<script>$|<\/script>$).*"]
+                },
+                is: {
+                    args:["^[A-z-0-9]{1,}"],
+                    msg:"Comments should not be empty"
+                }
+            }
         },
         userName : {
             type : Sequelize.STRING,
-            allowNull : false
+            allowNull : false,
         },
         date : {
             type : Sequelize.STRING,

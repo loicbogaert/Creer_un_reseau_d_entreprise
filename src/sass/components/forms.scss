@@ -39,3 +39,45 @@
             align-self: center;
         }
 }
+
+.deleteForm {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 200px;
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        label {
+            color: $color-1;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: $font-1;
+            text-shadow: 1px 1px 10px $color-2;
+            letter-spacing: 1px;
+        }
+
+        input {
+            height: 40px;
+            font-size: 20px;
+            font-family: $font-1;
+            text-align: center;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            border: 2px solid $color-2;
+        }
+
+        .submit {
+            margin-top: 20px;
+            width: 50%;
+            align-self: center;
+        }
+}

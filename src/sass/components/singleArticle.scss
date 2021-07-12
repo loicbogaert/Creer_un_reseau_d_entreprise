@@ -1,14 +1,10 @@
 #singleContainer {
-    height: 100vh;
-    max-height: 100vh;
     display: flex;
     flex-direction: column;
     background-color: $color-1;
     font-family: $font-1;
     padding: 10px;
     margin-top: 15px;
-    overflow: auto;
-    margin-bottom: 200px;
     background-color: #444852;
     color: $color-1;
     text-shadow: 0 0 10px black;

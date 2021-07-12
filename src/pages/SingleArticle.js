@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import React, {useState, useEffect, Fragment} from 'react';
 import { useParams } from 'react-router';
-import ArticleComments from './ArticleComments';
+import ArticleComments from '../components/ArticleComments';
 
 const SingleArticle = () => {
 

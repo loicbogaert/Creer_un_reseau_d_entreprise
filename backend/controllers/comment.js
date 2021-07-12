@@ -19,9 +19,10 @@ class Comments {
 
     commentsById(req, res, next) {
         Comment.findAll({
+            order : [['updatedAt', 'DESC' ]],
             where : {
                 articleId: req.body.id
-            }
+            },
         }).then(comments => res.status(201).json(comments))
         .catch(error => res.status(400).json({ error }))
     }

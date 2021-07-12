@@ -1,4 +1,3 @@
-const { articles } = require("../models");
 const db = require("../models");
 const Article = db.articles;
 
@@ -21,7 +20,7 @@ class Articles {
     };
 
     showArticle(req, res, next) {
-        Article.findAll()
+        Article.findAll({ order : [['updatedAt', 'DESC' ]]})
        .then(articles => res.status(201).json(articles))
        .catch(error => res.status(400).json({ error }) )
     };
@@ -32,6 +31,14 @@ class Articles {
         })
         .then(article => res.status(201).json(article))
         .catch(error => res.status(400).json({ error }))
+    }
+
+    modifyArticle(req, res, next) {
+        const articleObject = req.body;
+
+        Article.updateOne({ id : req.params.id }, { ...articleObject, id: req.params.id })
+            .then (() => res.status(200).json({ message : 'Article modified !'}))
+            .catch(error => res.status(400).json({ error }));
     }
 };
 

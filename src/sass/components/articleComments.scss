@@ -9,6 +9,7 @@
     background-color: $color-1;
     color: black;
     text-shadow: none;
+    word-break: break-word;
 
     &__infos {
         width: 50%;
@@ -31,6 +32,7 @@
         align-self: center;
         text-align: center;
         font-size: 16px;
+        padding: 10px;
     }
 }
 

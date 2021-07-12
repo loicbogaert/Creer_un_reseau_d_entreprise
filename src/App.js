@@ -3,11 +3,12 @@ import Home from "./pages/Home";
 import Texts from "./pages/Texts";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import SingleArticle from "./pages/SingleArticle";
 import NotFound from './pages/NotFound';
 import Navigation from "./components/Navigation";
 import Connect from "./components/Connect";
 import Footer from "./components/Footer";
-import SingleArticle from "./components/SingleArticle";
+import DeleteAccount from "./pages/DeleteAccount";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/forum" exact component={Texts} />
             <Route path="/signup" exact component={Signup} />
             <Route path="/login" exact component={Login} />
+            <Route path="/delete" exact component={DeleteAccount}/>
             <Route path="/forum/:id" exact component={SingleArticle} />
 
             {/** 404 not found */}
