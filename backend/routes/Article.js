@@ -11,6 +11,7 @@ router.post('/', articleCtrl.createArticle);
 router.get('/', articleCtrl.showArticle);
 router.post('/:id', articleCtrl.singleArticle);
 router.put('/:id', auth, articleCtrl.modifyArticle);
+router.delete('/:id', articleCtrl.deleteArticle);
 
 
 

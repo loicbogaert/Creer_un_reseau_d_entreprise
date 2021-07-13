@@ -1,11 +1,14 @@
+import axios from 'axios';
 import Axios from 'axios';
 import React, {useState, useEffect, Fragment} from 'react';
 import { useParams } from 'react-router';
 import ArticleComments from '../components/ArticleComments';
 import Popup from '../components/Popup';
+import { useHistory } from 'react-router';
 
 const SingleArticle = () => {
 
+    const history = useHistory();
     /** Error useState */
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -80,18 +83,34 @@ const SingleArticle = () => {
     }
 
 
+    /**Delete axios call */
+    function deleteThisArticle() {
+        axios.delete(url, {
+            data: {
+                id : id,
+                userName : localStorage.getItem("loggedIn")
+            }
+        }).then(res => {
+            console.log(res)
+            history.push("/forum")
+        })
+    }
+
+
     return (
          <Fragment>
             {/**Create new article for each article stored in db */}
             <div key={article.id} id="singleContainer">
+                <button id="singleContainer__openPopup" onClick={() => setButtonPopup(true)}>Modify Your Article</button>
+                <button id="singleContainer__articleDelete" onClick={() => deleteThisArticle()}>Delete This Article</button>
+                
                 {/**Article infos */}
+                <div id="singleContainer__borderSection"></div>
                 <div id="singleContainer__infos">
                     <p>Author : {article.userName}</p>
                     <p>Publish Date : {article.date}</p>
                 </div>
                 {/** Popup */}
-                <button id="singleContainer__openPopup" onClick={() => setButtonPopup(true)}>Modify Your Article</button>
-
                 <Popup trigger={buttonPopup} setTrigger= {setButtonPopup}>       
                     <form onSubmit={(e)=>submit(e)} id="singleContainer__articleForm">
                     <label id="singleContainer__label">
@@ -110,7 +129,8 @@ const SingleArticle = () => {
                     <p id="articleText">{article.article}</p>
                 </div>
                 {/**Comments section*/}
-                <div id="singleContainer__borderSection"></div>
+                <div id="singleContainer__borderSection">
+                </div>
                 <h3 id="singleContainer__comments">Comment Section</h3>
                 <ArticleComments></ArticleComments>
                 <div id="singleContainer__messages">

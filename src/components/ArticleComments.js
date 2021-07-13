@@ -55,6 +55,18 @@ const ArticleComments = () => {
         console.log(newdata)
     }
 
+        /**Delete axios call */
+        function deleteThisComment(commentID) {
+            Axios.delete(url2, {
+                data: {
+                    id : commentID,
+                    userName : localStorage.getItem("loggedIn")
+                }
+            }).then(res => {
+                window.location.reload(false);
+            })
+        }
+
     return (
         <Fragment>
             {errorMessage && (
@@ -72,6 +84,7 @@ const ArticleComments = () => {
                     </div>
 
                     <p id="allComments__comment">{allComments.comment}</p>
+                    <button id="singleContainer__articleDelete" onClick={() => deleteThisComment(allComments.id)}>Delete This Comment</button>
                 </div>
             ))}
        </Fragment>

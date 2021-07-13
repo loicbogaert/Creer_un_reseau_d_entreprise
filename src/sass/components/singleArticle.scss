@@ -25,16 +25,17 @@
     }
 
     &__article{
-        width: 100%;
+        width: 80%;
         padding: 20px;
         padding-left: 50px;
         padding-right: 50px;
         font-size: 18px;
         word-break: break-word;
+        align-self: center;
     }
 
     &__borderSection {
-        width: 60%;
+        width: 90%;
         border-top: 2px solid $color-2;
         align-self: center;
         margin:30px;
@@ -98,5 +99,30 @@
         height: 5vh;
         font-family: $font-1;
         font-size: 18px;
+    }
+
+    &__openPopup {
+        width: 40vh;
+        align-self: center;
+        height: 5vh;
+        font-family: "Do Hyeon", sans-serif;
+        font-size: 18px;
+    }
+
+    &__articleDelete {
+        padding: 8px;
+        background: white;
+        color: red;
+        border: 1px solid red;
+        font-family: $font-3;
+        font-weight: bold;
+        align-self: center;
+        font-size: 20px;
+            &:hover {
+                cursor: pointer;
+                background: red;
+                color : white;
+                border: 1px solid black;
+            }
     }
 }

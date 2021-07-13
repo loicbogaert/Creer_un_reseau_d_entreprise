@@ -5,5 +5,6 @@ const commentsCtrl = new Comments();
 
 router.post('/:id', commentsCtrl.articleComments);
 router.post('/', commentsCtrl.commentsById);
+router.delete('/:id', commentsCtrl.deleteComment);
 
 module.exports = router;

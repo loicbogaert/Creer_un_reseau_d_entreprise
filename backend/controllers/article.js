@@ -43,12 +43,28 @@ class Articles {
     modifyArticle(req, res, next) {
         const articleObject = req.body;
         const id = articleObject.id;
-        console.log(articleObject);
 
         Article.update({ ...articleObject },
             {where : { id : id }})
             .then (() => res.status(200).json({ message : 'Article modified !'}))
             .catch(error => res.status(400).json({ error }));
+    }
+
+    deleteArticle(req, res, next) {
+        console.log(req.body)
+        const userName = req.body.userName;
+        const id = req.body.id;
+        console.log(userName)
+        console.log(id)
+
+        if (userName === "Moderator") {
+            Article.destroy({ where : { id : id }})
+            .then (() => res.status(200).json({ message : 'Article Deleted !'}))
+            .catch(error => res.status(400).json({ error }));
+        }
+        else {
+            return res.status(401).json({ message : 'Unauthorised Action' })
+        }
     }
 };
 

@@ -24,21 +24,23 @@ const ArticleFeed = () => {
         <Fragment>
              {/**Create new article for each article stored in db */}
             {datas.map((article) => (
-                <Link to={'/forum/' + article.id} key={article.id} id="articleContainer">
-                {/**Article titles */}
-                <div id="articleTitle">
-                    <h3>{article.title}</h3>
-                {/**Written by*/}
-                    <p>Author : {article.userName}</p>
-                {/**Date of publication */}
-                    <p>Publish Date : {article.date}</p>
-                </div>
-                {/**Articles */}
-                <div id="articleArticle">
-                    <p id="articleText">{article.article}</p>
-                </div>
-            </Link>
-        ))}
+                <Link to={'/forum/' + article.id} key={article.id} id="linkContainer">
+                    <div id="articleContainer">
+                        {/**Article titles */}
+                        <div id="articleTitle">
+                            <h3>{article.title}</h3>
+                        {/**Written by*/}
+                            <p>Author : {article.userName}</p>
+                        {/**Date of publication */}
+                            <p>Publish Date : {article.date}</p>
+                        </div>
+                        {/**Articles */}
+                        <div id="articleArticle">
+                            <p id="articleText">{article.article}</p>
+                        </div>
+                    </div>
+                </Link>
+            ))}
         </Fragment>
     );
 };
