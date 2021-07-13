@@ -8,11 +8,11 @@ module.exports = (sequelize, Sequelize) => {
                     args : ["^(?!<script>$|<\/script>$).*"]
                 },
                 is : {
-                    args: ["^[A-z-0-9]{2,}"],
+                    args: ["^.{2,}"],
                     msg:"Minimum 2 characters required in title"
                 },
                 is: {
-                    args:["^[A-z-0-9]{0,255}"],
+                    args:["^.{0,255}"],
                     msg:"Maximum 250 characters for titles"
                 }
             }
@@ -25,7 +25,7 @@ module.exports = (sequelize, Sequelize) => {
                     args : ["^(?!<script>$|<\/script>$).*"]
                 },
                 is: {
-                    args: ["^[A-z-0-9]{10,}"],
+                    args: ["^.{10,}"],
                     msg:"Minimum 10 characters required for an article"
                 }
             }
@@ -38,6 +38,10 @@ module.exports = (sequelize, Sequelize) => {
             type : Sequelize.STRING,
             allowNull : false
         },
+        userId : {
+            type : Sequelize.STRING,
+            allowNull : false
+        }
     });
 
     return Article;

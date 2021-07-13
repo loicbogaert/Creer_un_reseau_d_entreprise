@@ -27,7 +27,9 @@ const LoginForm = () => {
         .then(res=> {
             /**Response saved in localStorage */
             const userName = res.data.userName;
+            const token  = res.data.token;
             localStorage.setItem("loggedIn",userName);
+            localStorage.setItem("token",token);
             /**Changing page when submitting */
             history.push("/");
         })

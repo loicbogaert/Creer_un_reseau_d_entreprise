@@ -16,7 +16,8 @@ const ChatBox = () => {
     const [data, setData] = useState({
         title : "",
         article : "",
-        userName : ""
+        userName : "",
+        token : ""
     })
 
     function submit(e) {
@@ -24,7 +25,8 @@ const ChatBox = () => {
         Axios.post(url,{
             title : data.title,
             article : data.article,
-            userName : localStorage.getItem("loggedIn")
+            userName : localStorage.getItem("loggedIn"),
+            token : localStorage.getItem("token")
         })
         .then(res=> {
             console.log(res)

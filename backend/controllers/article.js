@@ -1,5 +1,8 @@
 const db = require("../models");
 const Article = db.articles;
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+const TOKEN = process.env.SECRET_TOKEN;
 
 class Articles {
     createArticle(req, res, next){
@@ -7,13 +10,17 @@ class Articles {
         const title = req.body.title;
         const userName = req.body.userName;
         const date = Date().slice(0, 24);
+        const token = req.body.token;
+        const decodedToken = jwt.verify(token, TOKEN);
+        const userId = decodedToken.userId;
 
         Article.create({
             article : article,
             title : title,
             userName : userName,
             date : date,
-            comments : []
+            comments : [],
+            userId : userId
         })
         .then(() => res.status(201).json({ message : 'Article Created !' }))
         .catch(error => res.status(400).json({ error }))
@@ -35,8 +42,11 @@ class Articles {
 
     modifyArticle(req, res, next) {
         const articleObject = req.body;
+        const id = articleObject.id;
+        console.log(articleObject);
 
-        Article.updateOne({ id : req.params.id }, { ...articleObject, id: req.params.id })
+        Article.update({ ...articleObject },
+            {where : { id : id }})
             .then (() => res.status(200).json({ message : 'Article modified !'}))
             .catch(error => res.status(400).json({ error }));
     }

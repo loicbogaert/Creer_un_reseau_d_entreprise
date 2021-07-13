@@ -27,6 +27,8 @@ sequelize.query("SELECT * from articles", { type: sequelize.QueryTypes.SELECT })
     console.log(articles);
 })
 
+
+
     /*init routes*/
     app.use(express.json());
     app.use('/api/auth', userRoutes);

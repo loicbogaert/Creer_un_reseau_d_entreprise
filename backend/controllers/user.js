@@ -60,7 +60,8 @@ class Users {
                         token: jwt.sign(
                             { userId: user.id },
                             process.env.SECRET_TOKEN,
-                            { expiresIn: '24h' })
+                            { expiresIn: '24h' }
+                        )
                     })
 
                     /**Password didn't match */
