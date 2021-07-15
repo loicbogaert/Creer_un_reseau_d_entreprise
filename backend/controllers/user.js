@@ -29,7 +29,7 @@ class Users {
                         password : hash
                     })
                 .then(() => res.status(201).json({ message : 'New user created' }))
-                .catch(error => res.status(400).json({ error }), res.statusMessage = ('This email has already been used'))
+                .catch(error => res.status(400).json({ error })), res.statusMessage = ('Sequelize Error');
                 })
                 .catch(error => res.status(500).json({ error }), res.statusMessage = ('Server Error :('));
             })

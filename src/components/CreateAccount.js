@@ -31,7 +31,13 @@ const CreateAccount = () => {
                 /*Page change when submitting*/ 
             history.push("/login");
         }).catch(error => {
-            setErrorMessage(error.response.statusText)
+            if (error.response.statusText === "Sequelize Error"){
+                setErrorMessage(error.response.data.error.errors[0].message)
+            }
+            else {
+                setErrorMessage(error.response.statusText)
+            }
+            console.log(error.response)
         })
     }
 
