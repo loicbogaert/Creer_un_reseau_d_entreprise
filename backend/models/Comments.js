@@ -3,14 +3,11 @@ module.exports = (sequelize, Sequelize) => {
         comment : {
             type : Sequelize.TEXT,
             allowNull : false,
-            validate :{
+            validate : {
                 is : {
-                    args : ["^(?!<script>$|<\/script>$).*"]
-                },
-                is: {
-                    args:["^[A-z-0-9]{1,}"],
+                    args : ["^(?!<script>).{1,}$"],
                     msg:"Comments should not be empty"
-                }
+                },
             }
         },
         userName : {

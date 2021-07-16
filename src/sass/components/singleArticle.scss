@@ -4,7 +4,6 @@
     background-color: $color-1;
     font-family: $font-1;
     padding: 10px;
-    margin-top: 15px;
     background-color: #444852;
     color: $color-1;
     text-shadow: 0 0 10px black;
@@ -20,18 +19,20 @@
     &__title {
         text-align: center;
         width: 100%;
-        padding-top: 40px;
         font-size:24px;
+        padding: 15px;
     }
 
     &__article{
         width: 80%;
-        padding: 20px;
         padding-left: 50px;
         padding-right: 50px;
+        margin-top: 20px;
         font-size: 18px;
         word-break: break-word;
         align-self: center;
+        border: 2px solid black;
+        box-shadow: 10px 5px 0px black;
     }
 
     &__borderSection {
@@ -94,19 +95,43 @@
     }
 
     &__articleSubmit {
-        width: 40vh;
         align-self: center;
-        height: 5vh;
         font-family: $font-1;
         font-size: 18px;
+        padding: 5px;
+        box-shadow: 6px 6px 0 black,
+		-6px -6px 0 rgb(107, 107, 107),
+		-6px 6px 0 black,
+		6px -6px 0 black;
+        transition: 0.6s ease-in-out;
+        border:1px solid black;
+         &:hover {
+            box-shadow: 20px 10px 0 rgb(107, 107, 107), -20px -10px 0 black;
+            text-shadow: $color-2 1px 2px 2px;
+            font-weight: bold;
+            letter-spacing: 1px;
+         }
     }
 
     &__openPopup {
-        width: 40vh;
+        background-image: linear-gradient(to right, $color-bg 0%, $color-2  51%, $color-bg  100%);
+        margin: 10px;
+        padding: 10px 30px;
+        text-align: center;
+        transition: 0.5s;
+        background-size: 200% auto;
+        color: white;            
         align-self: center;
-        height: 5vh;
-        font-family: "Do Hyeon", sans-serif;
-        font-size: 18px;
+        border: 2px solid white;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: $font-3;
+        letter-spacing: 1px;
+        &:hover {
+            background-position: right center;
+            color: #fff;
+            text-decoration: none;
+        } 
     }
 
     &__articleDelete {
@@ -125,4 +150,53 @@
                 border: 1px solid black;
             }
     }
+}
+
+.commentDelete {
+    padding: 8px;
+    background: white;
+    color: red;
+    border: 1px solid red;
+    font-family: $font-3;
+    font-weight: bold;
+    align-self: center;
+    font-size: 20px;
+        &:hover {
+            cursor: pointer;
+            background: red;
+            color : white;
+            border: 1px solid black;
+        }
+}
+
+
+.hidden {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+#articleText {
+    white-space: pre-wrap;
+    padding: 5px;
+}
+
+#submit{
+    background-image: linear-gradient(to right, $color-bg 0%, $color-2  51%, $color-bg  100%);
+    padding: 15px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    align-self: center;
+    border: 2px solid white;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: $font-3;
+    letter-spacing: 1px;
+    &:hover {
+        background-position: right center;
+        color: #fff;
+        text-decoration: none;
+    } 
 }

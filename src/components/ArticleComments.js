@@ -52,7 +52,6 @@ const ArticleComments = () => {
         const newdata={...comments};
         newdata[e.target.id] = e.target.value;
         setComments(newdata);
-        console.log(newdata)
     }
 
         /**Delete axios call */
@@ -66,6 +65,22 @@ const ArticleComments = () => {
                 window.location.reload(false);
             })
         }
+
+
+        /**Function to show delete button for moderator */   
+    function deleteComment() {
+        const array = document.getElementsByClassName("buttonHidden")
+        if(localStorage.getItem("loggedIn") === "Moderator") {
+            for (var i = 0; i < array.length; i++){
+               array[i].classList.add("commentDelete")
+               array[i].classList.remove("hidden")
+           }
+        } else {}
+   }
+
+  setTimeout(() => {
+    deleteComment()
+  }, 50)
 
     return (
         <Fragment>
@@ -82,9 +97,9 @@ const ArticleComments = () => {
                         <p id="allComments__user">User : {allComments.userName}</p>
                         <p id="allComments__date">Publication Date : {allComments.date}</p>
                     </div>
-
                     <p id="allComments__comment">{allComments.comment}</p>
-                    <button id="singleContainer__articleDelete" onClick={() => deleteThisComment(allComments.id)}>Delete This Comment</button>
+                    <button className="hidden buttonHidden" onClick={() => deleteThisComment(allComments.id)}>Delete This Comment</button>
+                    
                 </div>
             ))}
        </Fragment>

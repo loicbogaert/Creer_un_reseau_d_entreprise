@@ -96,14 +96,26 @@ const SingleArticle = () => {
         })
     }
 
+    /**Function showing buttons (to modify or delete an article) */
+
+    function modifyButton() {
+        if(localStorage.getItem("loggedIn")  === article.userName) {
+            return <button id="singleContainer__openPopup" onClick={() => setButtonPopup(true)}>Modify Your Article</button>
+        }
+    }
+
+    function deleteArticle() {
+        if(localStorage.getItem("loggedIn") === "Moderator"){
+            return <button id="singleContainer__articleDelete" onClick={() => deleteThisArticle()}>Delete This Article</button>
+        }
+    }
 
     return (
          <Fragment>
             {/**Create new article for each article stored in db */}
             <div key={article.id} id="singleContainer">
-                <button id="singleContainer__openPopup" onClick={() => setButtonPopup(true)}>Modify Your Article</button>
-                <button id="singleContainer__articleDelete" onClick={() => deleteThisArticle()}>Delete This Article</button>
-                
+                {modifyButton()}
+                {deleteArticle()}
                 {/**Article infos */}
                 <div id="singleContainer__borderSection"></div>
                 <div id="singleContainer__infos">
@@ -114,18 +126,20 @@ const SingleArticle = () => {
                 <Popup trigger={buttonPopup} setTrigger= {setButtonPopup}>       
                     <form onSubmit={(e)=>submit(e)} id="singleContainer__articleForm">
                     <label id="singleContainer__label">
+                        Article Title
                         <textarea onChange={(e)=>handle(e)} defaultValue={article.title} type="text" id="singleContainer__titlePop" name="title" minLength="1" autoCapitalize="sentences"/>
                     </label>
                     <p className="error2">{errorMessage}</p>
                     <label id="singleContainer__label">
+                        Main text of your article
                         <textarea onChange={(e)=>handle(e)} defaultValue={article.article} type="text" id="singleContainer__articlePop" name="article" autoCapitalize="sentences" minLength="1"/>
                     </label>
                     <input type="submit" value="Send Your Article" id="singleContainer__articleSubmit"/>
                     </form>     
                 </Popup>
                 {/**Article*/}
-                <h3 id="singleContainer__title">{article.title}</h3>
                 <div id="singleContainer__article">
+                <h3 id="singleContainer__title">{article.title}</h3>
                     <p id="articleText">{article.article}</p>
                 </div>
                 {/**Comments section*/}

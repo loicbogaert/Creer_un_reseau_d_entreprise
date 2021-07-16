@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
             allowNull : false,
             validate :{
                 is: {
-                    args: ["^(?!<script>).{10,}$"],
+                    args: [""],
                     msg:"Minimum 10 characters required for an article"
                 },
             }

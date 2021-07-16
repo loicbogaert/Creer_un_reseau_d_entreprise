@@ -12,3 +12,16 @@
         border: solid 2px black;
     }
 }
+
+@keyframes buttonShadow {
+    0%  {
+        box-shadow: 5px 5px 0 black,
+		-5px -5px 0 black,
+		-5px 5px 0 black,
+		5px -5px 0 black;
+    }
+
+    100% {
+        box-shadow: 20px 5px 0 black, -20px -5px 0 black;
+    }
+}
