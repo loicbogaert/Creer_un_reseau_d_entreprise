@@ -49,8 +49,12 @@ class Articles {
         const title = req.body.title;
         const article = req.body.article;
 
+        /**If neither title and article are modified = do nothing*/
+        if (title.length === 0 && article.length === 0) {
+            return res.status(400).json({ message : 'Article nor title were modified' })
+        }
         /** If title wasn't changed, only the article is modified */
-        if (title.length === 0) {
+       else  if (title.length === 0) {
             Article.update({ article : article },
                 {where : { id : id }})
                 .then (() => res.status(200).json({ message : 'Article modified !'}))

@@ -117,24 +117,24 @@ const SingleArticle = () => {
                 {modifyButton()}
                 {deleteArticle()}
                 {/**Article infos */}
-                <div id="singleContainer__borderSection"></div>
+                <div id="singleContainer__borderSection1"></div>
                 <div id="singleContainer__infos">
-                    <p>Author : {article.userName}</p>
-                    <p>Publish Date : {article.date}</p>
+                    <p>Author :<br/> {article.userName}</p>
+                    <p>Publish Date :<br/>{article.date}</p>
                 </div>
                 {/** Popup */}
                 <Popup trigger={buttonPopup} setTrigger= {setButtonPopup}>       
                     <form onSubmit={(e)=>submit(e)} id="singleContainer__articleForm">
-                    <label id="singleContainer__label">
+                    <label id="singleContainer__labelTitle">
                         Article Title
                         <textarea onChange={(e)=>handle(e)} defaultValue={article.title} type="text" id="singleContainer__titlePop" name="title" minLength="1" autoCapitalize="sentences"/>
                     </label>
                     <p className="error2">{errorMessage}</p>
-                    <label id="singleContainer__label">
+                    <label id="singleContainer__labelArticle">
                         Main text of your article
                         <textarea onChange={(e)=>handle(e)} defaultValue={article.article} type="text" id="singleContainer__articlePop" name="article" autoCapitalize="sentences" minLength="1"/>
                     </label>
-                    <input type="submit" value="Send Your Article" id="singleContainer__articleSubmit"/>
+                    <input type="submit" value="Modify Your Article" id="singleContainer__articleSubmit"/>
                     </form>     
                 </Popup>
                 {/**Article*/}
@@ -143,7 +143,7 @@ const SingleArticle = () => {
                     <p id="articleText">{article.article}</p>
                 </div>
                 {/**Comments section*/}
-                <div id="singleContainer__borderSection">
+                <div id="singleContainer__borderSection2">
                 </div>
                 <h3 id="singleContainer__comments">Comment Section</h3>
                 <ArticleComments></ArticleComments>

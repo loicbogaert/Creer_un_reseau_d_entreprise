@@ -8,6 +8,7 @@
     font-family: $font-1;
     background-color: $color-1;
     align-items: center;
+    overflow: hidden;
     &:hover {
         border: 2px solid $color-2;
     }
@@ -80,4 +81,11 @@
         color: #fff;
         text-decoration: none;
     } 
+}
+
+
+@media screen and (max-width: 479px) {
+    #articleContainer{
+        width: 100%;
+    }   
 }
