@@ -11,9 +11,10 @@
         margin: 10px;
         padding: 10px;
         position: relative;
-        font-size: 18px;
+        font-size: 22px;
             &:hover {
                 color: $color-2;
+                border-bottom: 4px solid white;
             }
     }
 

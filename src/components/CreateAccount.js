@@ -58,18 +58,18 @@ const CreateAccount = () => {
                     <h1>Create Your Account</h1>
             <form onSubmit= {(e)=>submit(e)}>
                 <label>Name</label>
-                <input onChange={(e)=>handle(e)} value={data.name} id="name" placeholder="Bob Ross" type="text" required />
+                <input onChange={(e)=>handle(e)} value={data.name} id="name" className="inputText" placeholder="Bob Ross" type="text" required />
 
                 <label>Email</label>
-                <input onChange={(e)=>handle(e)} value={data.email} id="email" placeholder="Example@gmail.com" type="email" required />
+                <input onChange={(e)=>handle(e)} value={data.email} id="email" className="inputText" placeholder="Example@gmail.com" type="email" required />
 
                 <label>Password</label>
-                <input onChange={(e)=>handle(e)} value={data.password} id="password" placeholder="Password" type="password" required />
+                <input onChange={(e)=>handle(e)} value={data.password} id="password" className="inputText" placeholder="Password" type="password" required />
 
                 <label>Rewrite your password</label>
-                <input onChange={(e)=>handle(e)} value={data.passwordCheck} id="passwordCheck" placeholder="Password" type="password" required />
+                <input onChange={(e)=>handle(e)} value={data.passwordCheck} id="passwordCheck" className="inputText" placeholder="Password" type="password" required />
 
-                <input type="submit" value="Submit" className="submit"/>
+                <input type="submit" value="Create Account" className="submit"/>
             </form>
             {errorMessage && (
                     <p className="error"><i className="fas fa-exclamation-triangle"></i> {errorMessage} </p>

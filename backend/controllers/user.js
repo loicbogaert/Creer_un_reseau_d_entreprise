@@ -4,6 +4,7 @@ const Op = db.Sequelize.Op;
 const jwt = require ('jsonwebtoken');
 const bcrypt = require('bcrypt');
 SALT_WORK_FACTOR = 10;
+const CryptoJS = require('crypto-js');
 require('dotenv').config();
 
 
@@ -15,24 +16,32 @@ class Users {
         const email = req.body.email;
         const password = req.body.password;
         const passwordCheck = req.body.passwordCheck;
+        var key = CryptoJS.enc.Hex.parse(process.env.CRYPTOJS_KEY);
+        var iv = CryptoJS.enc.Hex.parse(process.env.CRYPTOJS_IV);
+        var encrypted = CryptoJS.AES.encrypt(email, key,{iv:iv}).toString();
 
 /**If both passwords sent match, hash password, create user + assign a token*/
         if(password === passwordCheck) {
-            bcrypt.genSalt(SALT_WORK_FACTOR)
-            .then(salt => {
-                /**hash */
-                bcrypt.hash(req.body.password, salt)
-                .then(hash => {
-                    User.create({
-                        name : name,
-                        email : email,
-                        password : hash
+            if(/^(?=.*[A-Za-z1-9])(?=.*[0-9])(?=.*[A-Z])/.test(password)) {
+                bcrypt.genSalt(SALT_WORK_FACTOR)
+                .then(salt => {
+                    /**hash */
+                    bcrypt.hash(req.body.password, salt)
+                    .then(hash => {
+                        User.create({
+                            name : name,
+                            email : encrypted || email,
+                            password : hash
+                        })
+                    .then(() => res.status(201).json({ message : 'New user created' }))
+                    .catch(error => res.status(400).json({ error })), res.statusMessage = ('Sequelize Error');
                     })
-                .then(() => res.status(201).json({ message : 'New user created' }))
-                .catch(error => res.status(400).json({ error })), res.statusMessage = ('Sequelize Error');
+                    .catch(error => res.status(500).json({ error }), res.statusMessage = ('Server Error :('));
                 })
-                .catch(error => res.status(500).json({ error }), res.statusMessage = ('Server Error :('));
-            })
+            } else {
+                res.statusMessage = ('Password must contain 8 characters, an uppercase and one number')
+                res.status(400).end()
+            }
         } else {
             res.statusMessage = ('Passwords doesn\'t match !')
             res.status(400).end()
@@ -43,9 +52,12 @@ class Users {
     login (req, res, next){
         const password = req.body.password;
         const email = req.body.email;
+        var key = CryptoJS.enc.Hex.parse(process.env.CRYPTOJS_KEY);
+        var iv = CryptoJS.enc.Hex.parse(process.env.CRYPTOJS_IV);
+        var encrypted = CryptoJS.AES.encrypt(email, key,{iv:iv}).toString();
 
         /**If user was found, check password, then log the user in*/
-        User.findOne({ where : { email : email }})
+        User.findOne({ where : { email : encrypted }})
         .then(user => {
             if(!user) {
                 return res.status(401).json({ error : 'User not found, Your email is probably incorrect' })
@@ -78,12 +90,12 @@ class Users {
     delete (req, res, next) {
         const password = req.body.password;
         const email = req.body.email;
-
-        console.log(email)
-
+        var key = CryptoJS.enc.Hex.parse(process.env.CRYPTOJS_KEY);
+        var iv = CryptoJS.enc.Hex.parse(process.env.CRYPTOJS_IV);
+        var encrypted = CryptoJS.AES.encrypt(email, key,{iv:iv}).toString();
 
         /**If user was found, check password, then log the user in*/
-        User.findOne({ where : { email : email }})
+        User.findOne({ where : { email : encrypted }})
         .then(user => {
             if(!user) {
                 return res.status(401).json({ error : 'User not found, Your email is probably incorrect' })

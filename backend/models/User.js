@@ -21,8 +21,9 @@ module.exports = (sequelize, Sequelize) => {
         password : {
             type : Sequelize.STRING,
             allowNull : false,
-            validate : {is : /^(?!<script>).{2,}$/},
-            min : 2
+            validate : {is : /^(?!<script>){8,}/},
+            min : 2,
+            msg : 'Password must contain 8 characters minimum'
         },
     });
 

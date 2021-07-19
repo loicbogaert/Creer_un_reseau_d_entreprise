@@ -33,15 +33,14 @@ body, html {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    min-height: 100vh;
 }
 
 main {
     flex-grow: 1;
+    min-height: 100vh;
 }
 
 body {
-    min-height: 100vh;
     height: 100%;
 }
 

@@ -88,8 +88,8 @@ const ArticleComments = () => {
                 <p className="error"><i className="fas fa-exclamation-triangle"></i> {errorMessage} </p>
             )}
             <form id="msgForm" onSubmit={(e)=>submit(e)}>
-                <textarea onChange={(e)=>handle(e)} value={comments.comment} id="comment" placeholder="Leave a message" autoCapitalize="sentences" minLength="1"></textarea>
-                <input type="submit" value="Send Message" id="submit"/>
+                <textarea onChange={(e)=>handle(e)} value={comments.comment} id="comment" placeholder="Leave a comment" autoCapitalize="sentences" minLength="1"></textarea>
+                <input type="submit" value="Send Comment" id="submit"/>
             </form>
             {commentFeed.map(allComments =>(
                 <div id="allComments" key={allComments.id}>

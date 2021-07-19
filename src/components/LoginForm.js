@@ -51,12 +51,12 @@ const LoginForm = () => {
             <form onSubmit= {(e)=>submit(e)}>
 
                 <label>Email</label>
-                <input onChange={(e)=>handle(e)} value={data.email} id="email" placeholder="Example@gmail.com" type="email" required />
+                <input onChange={(e)=>handle(e)} value={data.email} id="email" className="inputText" placeholder="Example@gmail.com" type="email" required />
 
                 <label>Password</label>
-                <input onChange={(e)=>handle(e)} value={data.password} id="password" placeholder="Password" type="password" required />
+                <input onChange={(e)=>handle(e)} value={data.password} id="password" className="inputText" placeholder="Password" type="password" required />
 
-                <input type="submit" value="Submit" className="submit"/>
+                <input type="submit" value="Log in" className="submit"/>
             </form>
             {errorMessage && (
                     <p className="error"><i class="fas fa-exclamation-triangle"></i> {errorMessage} </p>

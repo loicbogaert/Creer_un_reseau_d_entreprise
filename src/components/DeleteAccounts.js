@@ -43,18 +43,18 @@ const DeleteAccounts = () => {
             <h1>Delete Your Account</h1>
             <form onSubmit= {(e)=>submit(e)}>
                 <label>Email</label>
-                <input onChange={(e)=>handle(e)} value={data.email} id="email" placeholder="Example@gmail.com" type="email" required />
+                <input onChange={(e)=>handle(e)} value={data.email} id="email" className="inputText" placeholder="Example@gmail.com" type="email" required />
 
                 <label>Password</label>
-                <input onChange={(e)=>handle(e)} value={data.password} id="password" placeholder="Password" type="password" required />
+                <input onChange={(e)=>handle(e)} value={data.password} id="password" className="inputText" placeholder="Password" type="password" required />
 
-                <input type="submit" value="Submit" className="submit"/>
+                <input type="submit" value="Delete" className="submit"/>
             </form>
             {errorMessage && (
                     <p className="error"><i className="fas fa-exclamation-triangle"></i> {errorMessage}</p>
                 )}
             {successMessage && (
-                    <p className="success">{successMessage}<br/> You will be redirected in 5 seconds</p>
+                    <p className="success">{successMessage}<br/> You will be redirected in 5 seconds </p>
                 )}
         </div>
     );
