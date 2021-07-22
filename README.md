@@ -1,9 +1,11 @@
 # Groupomania's social app project
 
 The project's goal was to create a chatting application for the brand Groupomania, so their
-employees could share articles and comment them.
+employees could share articles and comment them.  
+  
+This project was made with ReactJs, NodeJs and SASS.
 
-## To start the project
+### To start the project
 
 -> Open terminal : 
 1) npm i node-sass.
