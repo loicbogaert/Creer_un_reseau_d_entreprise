@@ -12,9 +12,10 @@
         padding: 10px;
         position: relative;
         font-size: 22px;
+        border-bottom: 4px solid $color-bg;
             &:hover {
                 color: $color-2;
-                border-bottom: 4px solid white;
+                border-bottom: 4px solid $color-1;
             }
     }
 

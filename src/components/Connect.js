@@ -26,7 +26,7 @@ const Connect = () => {
         return(
             <div className="disconnect">
                 <NavLink exact to ="/" onClick={() => localStorage.removeItem("loggedIn")}>
-               <p className="userName">{logged}</p>- Log out <i className="fas fa-sign-out-alt"></i>
+                    <p className="userName">{logged}</p>- Log out <i className="fas fa-sign-out-alt"></i>
                 </NavLink>
             </div>
         )

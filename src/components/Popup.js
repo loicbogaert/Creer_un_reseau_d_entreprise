@@ -1,5 +1,6 @@
 import React from 'react'
 
+/**prop appearing when triggered (popup) */
 function Popup(props) {
     return (props.trigger) ? (
         <div className="popup">

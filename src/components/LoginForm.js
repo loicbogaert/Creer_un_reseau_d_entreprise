@@ -6,11 +6,10 @@ import { useHistory } from 'react-router-dom';
 const LoginForm = () => {
     const history = useHistory();
 
-    /**Error handler */
+    /**Error useState*/
     const [errorMessage, setErrorMessage] = useState('');
 
-    /**Sending data to server with Axios */
-
+    /**variables */
     const url ="http://localhost:3005/api/auth/login"
     const [data, setData] = useState({
         email : "",
@@ -18,6 +17,7 @@ const LoginForm = () => {
         errorMessage: ""
     })
 
+    /**Sending data to server with Axios */
     function submit(e){
         e.preventDefault();
         Axios.post(url,{

@@ -8,10 +8,11 @@ import { useHistory } from 'react-router';
 
 const SingleArticle = () => {
 
-    const history = useHistory();
     /** Error useState */
     const [errorMessage, setErrorMessage] = useState('');
 
+    /**variables */
+    const history = useHistory();
     const url = "http://localhost:3005/api/article/:id"
     const [datas, setDatas] = useState({
         id : ""
@@ -33,6 +34,7 @@ const SingleArticle = () => {
         })
     }, []);
 
+    /**variables */
     const article = datas;
     const config = {
         headers : { Authorization : `Bearer ${localStorage.getItem("token")}`}
@@ -47,6 +49,7 @@ const SingleArticle = () => {
         userName : ""
     })
 
+    /**data to modify articles with axios + error messages set */
     function submit(e) {
         e.preventDefault();
         Axios.put(url,{
@@ -122,6 +125,7 @@ const SingleArticle = () => {
                     <p>Author :<br/> {article.userName}</p>
                     <p>Publish Date :<br/>{article.date}</p>
                 </div>
+
                 {/** Popup */}
                 <Popup trigger={buttonPopup} setTrigger= {setButtonPopup}>       
                     <form onSubmit={(e)=>submit(e)} id="singleContainer__articleForm">
@@ -137,9 +141,10 @@ const SingleArticle = () => {
                     <input type="submit" value="Modify Your Article" id="singleContainer__articleSubmit"/>
                     </form>     
                 </Popup>
+
                 {/**Article*/}
                 <div id="singleContainer__article">
-                <h3 id="singleContainer__title">{article.title}</h3>
+                    <h3 id="singleContainer__title">{article.title}</h3>
                     <p id="articleText">{article.article}</p>
                 </div>
                 {/**Comments section*/}

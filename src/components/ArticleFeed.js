@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 
 const ArticleFeed = () => {
 
+    /**variables */
     const url = "http://localhost:3005/api/article"
     const [datas, setDatas] = useState([]);
 
-    /**Axios get request to db*/
+    /**Axios get request to get data*/
 
     useEffect(() => {
         Axios.get(url)
@@ -26,15 +27,11 @@ const ArticleFeed = () => {
             {datas.map((article) => (
                 <Link to={'/forum/' + article.id} key={article.id} id="linkContainer">
                     <div id="articleContainer">
-                        {/**Article titles */}
                         <div id="articleTitle">
                             <h3>{article.title}</h3>
-                        {/**Written by*/}
                             <p>Author : {article.userName}</p>
-                        {/**Date of publication */}
                             <p>Publish Date : {article.date}</p>
                         </div>
-                        {/**Articles */}
                         <div id="articleArticle">
                             <p id="articleText">{article.article}</p>
                         </div>

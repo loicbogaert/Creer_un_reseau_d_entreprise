@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <div className="footer">
             <div className="footerRow1">
-            <img src="./img/logo-black.svg" alt="logo de Groupomania" className="logo"></img>
+                <img src="../img/logo-black.svg" alt="logo de Groupomania" className="logo"/>
                 <ul>
                     <a href="mailto:moderator@gmail.com"><li>Contact a moderator</li></a>
                     <a href="mailto:Groupomania@gmail.com"><li>Contact us</li></a>

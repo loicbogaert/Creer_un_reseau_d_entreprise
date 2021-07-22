@@ -12,6 +12,7 @@ const ChatBox = () => {
     /**Popup useState */
     const [buttonPopup, setButtonPopup] = useState(false);
 
+    /**variables */
     const url = "http://localhost:3005/api/article"
     const [data, setData] = useState({
         title : "",
@@ -20,6 +21,7 @@ const ChatBox = () => {
         token : ""
     })
 
+    /**Axios request to post articles data */
     function submit(e) {
         e.preventDefault();
         Axios.post(url,{
@@ -29,7 +31,6 @@ const ChatBox = () => {
             token : localStorage.getItem("token")
         })
         .then(res=> {
-            console.log(res)
             window.location.reload(true)
         }).catch(error => {
             if(error.response.data.error.errors) {
@@ -48,7 +49,6 @@ const ChatBox = () => {
         const newdata={...data};
         newdata[e.target.id] = e.target.value;
         setData(newdata);
-        console.log(newdata);
     }
 
     return (

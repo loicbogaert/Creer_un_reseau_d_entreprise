@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 
 const ArticleComments = () => {
 
+    /**variables */
     const param = useParams();
     const id = param.id;
     const url2 = "http://localhost:3005/api/comments/:id"
