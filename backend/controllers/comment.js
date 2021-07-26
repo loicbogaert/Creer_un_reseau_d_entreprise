@@ -1,5 +1,8 @@
 const db = require("../models");
 const Comment = db.comments;
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+const TOKEN = process.env.SECRET_TOKEN;
 
 class Comments {
     articleComments(req, res, next) {
@@ -28,11 +31,11 @@ class Comments {
     }
 
     deleteComment(req, res, next) {
-        console.log(req.body)
-        const userName = req.body.userName;
         const id = req.body.id;
+        const token = req.body.token;
+        const decodedToken = jwt.verify(token, TOKEN);
 
-        if (userName === "Moderator") {
+        if (decodedToken.userName === "Moderator") {
             Comment.destroy({ where : { id : id }})
             .then (() => res.status(200).json({ message : 'Comment Deleted !'}))
             .catch(error => res.status(400).json({ error }));

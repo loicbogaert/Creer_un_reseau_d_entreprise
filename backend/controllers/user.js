@@ -22,7 +22,7 @@ class Users {
 
 /**If both passwords sent match, hash password, create user + assign a token*/
         if(password === passwordCheck) {
-            if(/^(?=.*[A-Za-z1-9])(?=.*[0-9])(?=.*[A-Z])/.test(password)) {
+            if(/^(?=.*[A-Za-z1-9]{8,})(?=.*[0-9])(?=.*[A-Z])/.test(password)) {
                 bcrypt.genSalt(SALT_WORK_FACTOR)
                 .then(salt => {
                     /**hash */
@@ -70,7 +70,9 @@ class Users {
                         userId: user.id,
                         userName: user.name,
                         token: jwt.sign(
-                            { userId: user.id },
+                            { userId: user.id,
+                              userName : user.name      
+                            },
                             process.env.SECRET_TOKEN,
                             { expiresIn: '24h' }
                         )

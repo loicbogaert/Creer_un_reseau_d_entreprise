@@ -88,12 +88,13 @@ const SingleArticle = () => {
 
     /**Delete axios call */
     function deleteThisArticle() {
-        axios.delete(url, {
+        Axios.delete(url,{
             data: {
                 id : id,
-                userName : localStorage.getItem("loggedIn")
+                token : localStorage.getItem("token")
             }
-        }).then(res => {
+        })
+        .then(res => {
             console.log(res)
             history.push("/forum")
         })

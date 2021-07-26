@@ -6,8 +6,13 @@ module.exports = (sequelize, Sequelize) => {
             unique : {
                 msg : 'This name was already taken, please choose a new one'
             },
-            validate : {is : /^(?!<script>).{2,}$/},
-            min : 2
+            validate : {
+                is : {
+                    args : ["^(?!<script>).{2,}$"],
+                    msg:"Name should be atleast 2 characters long"
+                }
+            },
+            min : 2,
         },
         email : {
             type : Sequelize.STRING,

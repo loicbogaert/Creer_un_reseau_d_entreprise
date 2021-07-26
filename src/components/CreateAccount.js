@@ -64,6 +64,7 @@ const CreateAccount = () => {
                 <input onChange={(e)=>handle(e)} value={data.email} id="email" className="inputText" placeholder="Example@gmail.com" type="email" required />
 
                 <label>Password</label>
+                <p id="mustPass">(Must contain 8 characters, an uppercase and a number)</p>
                 <input onChange={(e)=>handle(e)} value={data.password} id="password" className="inputText" placeholder="Password" type="password" required />
 
                 <label>Rewrite your password</label>

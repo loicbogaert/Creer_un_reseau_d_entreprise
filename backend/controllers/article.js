@@ -77,11 +77,12 @@ class Articles {
     }
 
     deleteArticle(req, res, next) {
-        const userName = req.body.userName;
         const id = req.body.id;
-
+        const token = req.body.token;
+        const decodedToken = jwt.verify(token, TOKEN);
+        console.log(decodedToken)
         /** If the username used is Moderator, delete the article */
-        if (userName === "Moderator") {
+        if (decodedToken.userName === "Moderator") {
             Article.destroy({ where : { id : id }})
             .then (() => res.status(200).json({ message : 'Article Deleted !'}))
             .catch(error => res.status(400).json({ error }));

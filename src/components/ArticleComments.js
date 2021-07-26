@@ -60,7 +60,7 @@ const ArticleComments = () => {
             Axios.delete(url2, {
                 data: {
                     id : commentID,
-                    userName : localStorage.getItem("loggedIn")
+                    token : localStorage.getItem("token")
                 }
             }).then(res => {
                 window.location.reload(false);
