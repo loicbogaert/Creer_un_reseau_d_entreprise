@@ -106,7 +106,8 @@ class Users {
                 if(err) throw (error => res.status(500).json({ error }));
 
                 if(data) {
-                    User.destroy({ where : { email : email }})
+                    console.log(email);
+                    User.destroy({ where : { email : encrypted }})
                     .then(() => res.status(201).json({ message : 'Account successfully deleted !' }))
                 }
                 else {
