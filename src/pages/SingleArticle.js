@@ -26,7 +26,6 @@ const SingleArticle = () => {
             id : id
         })
         .then((res) => {
-            console.log(res.data);
             setDatas(res.data);
         })
         .catch((err) =>{
@@ -57,7 +56,8 @@ const SingleArticle = () => {
             article : data.article,
             userName : localStorage.getItem("loggedIn"),
             id : id,
-            userId : datas.userId
+            userId : datas.userId,
+            articleId : data.id
         },config)
         .then(res=> {
             console.log(res)
@@ -103,7 +103,7 @@ const SingleArticle = () => {
     /**Function showing buttons (to modify or delete an article) */
 
     function modifyButton() {
-        if(localStorage.getItem("loggedIn")  === article.userName) {
+        if(localStorage.getItem("loggedIn")  === article.userName || localStorage.getItem("loggedIn")  === "Moderator") {
             return <button id="singleContainer__openPopup" onClick={() => setButtonPopup(true)}>Modify Your Article</button>
         }
     }

@@ -17,15 +17,20 @@ const app = express();
     app.use(helmet());
     app.use(cors());
 
+    /** TESTS db */
+
+/**
 sequelize.query("SELECT * from users", { type: sequelize.QueryTypes.SELECT })
-    .then(function(users){
-        console.log(users);
-    })
+.then(function(users){
+    console.log(users);
+})
 
 sequelize.query("SELECT * from articles", { type: sequelize.QueryTypes.SELECT })
 .then(function(articles){
     console.log(articles);
 })
+*/
+
 
     /*init routes*/
     app.use(express.json());

@@ -71,7 +71,7 @@ class Users {
                         userName: user.name,
                         token: jwt.sign(
                             { userId: user.id,
-                              userName : user.name      
+                              userName : user.name
                             },
                             process.env.SECRET_TOKEN,
                             { expiresIn: '24h' }
@@ -108,7 +108,7 @@ class Users {
                 if(data) {
                     console.log(email);
                     User.destroy({ where : { email : encrypted }})
-                    .then(() => res.status(201).json({ message : 'Account successfully deleted !' }))
+                    .then(() => res.status(200).json({ message : 'Account successfully deleted !' }))
                 }
                 else {
                     res.status(401).json({ error : 'Incorrect Password, please try again' })

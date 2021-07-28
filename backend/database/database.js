@@ -1,8 +1,8 @@
 require('dotenv').config();
 
 module.exports = {
-    HOST : "localhost",
-    USER : "loic",
+    HOST : process.env.HOST_BDD,
+    USER : process.env.USER_BDD,
     PASSWORD : process.env.PASSWORD_BDD,
     DB : "groupomania",
     dialect: "mysql",

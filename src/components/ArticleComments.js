@@ -100,7 +100,6 @@ const ArticleComments = () => {
                     </div>
                     <p id="allComments__comment">{allComments.comment}</p>
                     <button className="hidden buttonHidden" onClick={() => deleteThisComment(allComments.id)}>Delete This Comment</button>
-                    
                 </div>
             ))}
        </Fragment>

@@ -80,7 +80,6 @@ class Articles {
         const id = req.body.id;
         const token = req.body.token;
         const decodedToken = jwt.verify(token, TOKEN);
-        console.log(decodedToken)
         /** If the username used is Moderator, delete the article */
         if (decodedToken.userName === "Moderator") {
             Article.destroy({ where : { id : id }})
